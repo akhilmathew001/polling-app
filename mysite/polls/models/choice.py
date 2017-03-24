@@ -1,0 +1,15 @@
+from __future__ import unicode_literals
+from django.utils import timezone
+from django.db import models
+from polls.models import question
+
+# Create your models here.
+
+class Choice(models.Model):
+
+    question = models.ForeignKey(question.Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.question)
